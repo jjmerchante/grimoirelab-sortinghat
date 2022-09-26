@@ -1,0 +1,8 @@
+---
+title: Update package dependencies
+category: other
+author: Jose Javier Merchante <jjmerchante@bitergia.com>
+issue: null
+notes: >
+    jinja2 package and dev-dependencies are now similar to other
+    Grimoirelab packages.
