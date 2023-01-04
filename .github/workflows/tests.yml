@@ -3,7 +3,7 @@ name: tests
 on:
   push:
     branches:
-      - muggle
+      - '**'
     tags:
       - '!**'
   pull_request:
@@ -137,12 +137,24 @@ jobs:
           SORTINGHAT_SUPERUSER_PASSWORD: root
         run: |
           poetry run sortinghat-admin --config sortinghat.config.settings setup
-          poetry run sortinghatd --config sortinghat.config.settings --dev &
-      - name: Wait 10 seconds for server is up and running
-        run: sleep 10
+
       - name: Run end to end tests
-        working-directory: ./ui
+        uses: cypress-io/github-action@v5
+        with:
+          start: poetry run sortinghatd --config sortinghat.config.settings --dev
+          wait-on: 'http://127.0.0.1:8000'
+          spec: tests/e2e/specs/*.js
+          working-directory: ./ui
         env:
           CYPRESS_USERNAME: root
           CYPRESS_PASSWORD: root
-        run: yarn test:e2e
+          SORTINGHAT_SECRET_KEY: my-secret-key
+          SORTINGHAT_DB_PASSWORD: root
+
+#
+#      - name: Run end to end tests
+#        working-directory: ./ui
+#        env:
+#          CYPRESS_USERNAME: root
+#          CYPRESS_PASSWORD: root
+#        run: yarn test:e2e
