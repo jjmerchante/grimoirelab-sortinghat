@@ -9,7 +9,10 @@ describe("Login", () => {
   });
 
   it("Logs in a user", () => {
-    cy.visit("/");
+    cy.visit("/")
+        .its('document.body')
+        .children('#app')
+        .should('not.be.empty');
     cy.location("pathname").should("equal", "/login");
 
     cy.get("[id=username]").type(Cypress.env("USERNAME"));
@@ -27,7 +30,10 @@ describe("Login", () => {
   });
 
   it("Does not log in with wrong credentials", () => {
-    cy.visit("/");
+    cy.visit("/")
+        .its('document.body')
+        .children('#app')
+        .should('not.be.empty');
     cy.location("pathname").should("equal", "/login");
 
     // try logging in with invalid password
@@ -78,7 +84,10 @@ describe("Authenticated operations", () => {
   });
 
   it("Adds individuals", () => {
-    cy.visit("/");
+    cy.visit("/")
+        .its('document.body')
+        .children('#app')
+        .should('not.be.empty');
     cy.wait("@GetIndividuals");
     cy.wait(200);
 
@@ -107,7 +116,10 @@ describe("Authenticated operations", () => {
   });
 
   it("Adds individuals to workspace", () => {
-    cy.visit("/");
+    cy.visit("/")
+        .its('document.body')
+        .children('#app')
+        .should('not.be.empty');
     cy.orderBy("Last updated");
 
     cy.contains("tr", "Test workspace")
@@ -123,7 +135,10 @@ describe("Authenticated operations", () => {
   });
 
   it("Merges individuals", () => {
-    cy.visit("/");
+    cy.visit("/")
+        .its('document.body')
+        .children('#app')
+        .should('not.be.empty');
     cy.orderBy("Last updated");
     cy.addToWorkspace(["Test merge 1", "Test merge 2"]);
 
@@ -185,7 +200,10 @@ describe("Authenticated operations", () => {
   });
 
   it("Splits identities", () => {
-    cy.visit("/");
+    cy.visit("/")
+        .its('document.body')
+        .children('#app')
+        .should('not.be.empty');
     cy.orderBy("Last updated");
     cy.wait("@GetIndividuals");
 
@@ -231,7 +249,10 @@ describe("Authenticated operations", () => {
   });
 
   it("Deletes individuals", () => {
-    cy.visit("/");
+    cy.visit("/")
+        .its('document.body')
+        .children('#app')
+        .should('not.be.empty');
     cy.orderBy("Last updated");
     cy.addToWorkspace(["Test delete 1", "Test delete 2"]);
 

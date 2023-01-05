@@ -154,18 +154,6 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: my-screenshots
-          path: ui/cypress/screenshots
-#
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: my-videos
-          path: ui/cypress/videos
-#
 #      - name: Run end to end tests
 #        working-directory: ./ui
 #        env:

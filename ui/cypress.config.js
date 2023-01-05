@@ -10,6 +10,6 @@ module.exports = defineConfig({
     pageLoadTimeout: 100000,
     requestTimeout: 100000,
     video: true,
-    projectId: "izzmv6",
+    projectId: "izzmv6"
   }
 });
