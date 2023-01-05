@@ -144,18 +144,27 @@ jobs:
           working-directory: ./ui
           browser: chrome
           headed: true
+          record: true
         env:
           CYPRESS_USERNAME: root
           CYPRESS_PASSWORD: root
           SORTINGHAT_SECRET_KEY: my-secret-key
           SORTINGHAT_DB_PASSWORD: root
           UWSGI_HTTP: "http://localhost:8000"
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: my-artifact
-          path: /tmp
+          name: my-screenshots
+          path: ui/cypress/screenshots
+#
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: my-videos
+          path: ui/cypress/videos
 #
 #      - name: Run end to end tests
 #        working-directory: ./ui
