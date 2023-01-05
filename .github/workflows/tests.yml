@@ -145,11 +145,14 @@ jobs:
           wait-on: 'http://127.0.0.1:8000'
           spec: tests/e2e/specs/*.js
           working-directory: ./ui
+          browser: chrome
+          headed: true
         env:
           CYPRESS_USERNAME: root
           CYPRESS_PASSWORD: root
           SORTINGHAT_SECRET_KEY: my-secret-key
           SORTINGHAT_DB_PASSWORD: root
+          UWSGI_HTTP: "http://localhost:8000"
 
 #
 #      - name: Run end to end tests
