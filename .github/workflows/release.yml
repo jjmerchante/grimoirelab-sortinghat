@@ -29,7 +29,6 @@ jobs:
         with:
           artifact-name: sortinghat-dist
           artifact-path: dist
-          skip-checkout: yes
 
   tests:
     needs: [build]
