@@ -18,7 +18,7 @@ In the context of GrimoireLab, Sorting Hat is usually run after data is retrieve
 * Python >= 3.8
 * Poetry >= 1.1.0
 * MySQL >= 5.7 or MariaDB 10.0
-* Django = 3.2
+* Django = 4.2
 * Graphene-Django >= 2.0
 * uWSGI >= 2.0
 
@@ -70,7 +70,7 @@ $ apt install libmariadbclient-dev-compat
 **Note**: these examples use `sortinghat.config.settings` configuration file.
 In order to use that configuration you need to define the environment variable
 `SORTINGHAT_SECRET_KEY` with a secret. More info here:
-https://docs.djangoproject.com/en/3.2/ref/settings/#std:setting-SECRET_KEY
+https://docs.djangoproject.com/en/4.2/ref/settings/#std:setting-SECRET_KEY
 
 
 Install the required dependencies (this will also create a virtual environment).
